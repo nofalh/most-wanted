@@ -3,16 +3,6 @@
 function app(people){
 
 	let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-	
-	// if(searchType == "y" || searchType == "yes") {
-	// 	searchByFullName(people);
-	// }
-	// else if (searchType == "n" || searchType == "no") {
-	// 	searchByFullName(people);
-	// } else {
-	// 	alert("Wrong! Please try again, following the instructions dummy. :)");
-	// 	app(people);
-	// }
 	switch(searchType){
 		case 'yes':
 			searchByFullName(people);

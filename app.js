@@ -89,8 +89,13 @@ function lowerCase(word) {
 
 function searchByTraits(people) {
 	let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
-	let filteredPeople;
-
+	let filteredHeight;
+	let filteredWeight;
+	let filteredEyeColor;
+	let filteredGender;
+	let filteredAge;
+	let filteredOccupation;
+	
 	switch(userSearchChoice) {
 	case "height":
 		filteredHeight = searchByHeight(people);

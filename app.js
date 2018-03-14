@@ -135,6 +135,7 @@ function searchByWeight(people) {
 
 	return newArray;
 }
+
 function searchByHeight(people) {
 	let userInputHeight = prompt("what is the persons height?");
 
@@ -157,19 +158,44 @@ function searchByGender(people){
 	return newArray;
 }
 
-function buildDescendants(person, people) {
-
-	let descendants = people.filter(function (el) {
+function buildDescendants(personID, people) {
+	let descendants = [];
+	let addDescendants = people.filter(function (el) {
 		for(let i = 0; i < el.parents.length; i++){
-			if(el.parents[i] === person.id) {
+			if(el.parents[i] === personID) {
 				return true;
 			}
 		}
 	});
-
+	
 	// recursively build onto 'descendants'
+	descendants = descendants.concat(addDescendants);
+	console.log(descendants);
 
-	//buildDescendants(/* whom */, people);
+	// if addDescendants not empty ...
+	if(descendants.length > 0) {
+		for (let i = 0; i < descendants.length; i++) {
+			//buildDescendants(/* whom */, people);
+			buildDescendants(descendants[i].id, people);	
+		}
+	}
+	return descendants;
+}
+
+function echoName(person, people) {
+	for (let i = 0; i < people.length; i++) {
+		if(people[i].id === person) {
+			return people[i].firstName + " " + people[i].lastName;
+		}	
+	}
+}
+
+function getIndex(person, people) {
+	for (let i = 0; i < people.length; i++) {
+		if(people[i].id === person) {
+			return i;
+		}	
+	}
 }
 
 // Menu function to call once you find who you are looking for
@@ -194,7 +220,7 @@ function mainMenu(person, people){
 		case "descendants":
 			let descendants = [];
 			descendants = buildDescendants(person, people);
-			//console.log(descendants);
+			console.log(descendants);
 			//getDescendants(person, people);
 			break;
 		case "restart":

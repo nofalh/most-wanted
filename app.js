@@ -15,7 +15,6 @@ function app(people){
 	// }
 	switch(searchType){
 		case 'yes':
-		
 			searchByFullName(people);
 			break;
 		case 'no': 
@@ -98,7 +97,20 @@ function searchByTraits(people) {
 	case "weight":
 		filteredPeople = searchByWeight(people);
 		break;
-	// so on and so forth
+	case "age":
+		filteredpeople = searchByAge(people);
+		break;
+	case "eyecolor":
+		filteredpeople = searchByEyeColor(people);
+		break;
+	case "occupation":
+		filteredpeople = searchByOccupation(people);
+		break;
+	case "gender":
+		filteredPeople = searchByGender(people);
+		displayPeople (filteredPeople);
+		break;
+
 	default:
 		alert("You entered an invalid search type! Please try again.");
 		searchByTraits(people);
@@ -118,9 +130,29 @@ function searchByWeight(people) {
 		if(el.weight == userInputWeight) {
 		return true;
 		}
-		// return true if el.height matches userInputHeight
 	});
 
+	return newArray;
+}
+function searchByHeight(people) {
+	let userInputHeight = prompt("what is the persons height?");
+
+	let newArray = people.filter(function (el) {
+		if(el.height == userInputHeight) {
+			return true;
+		}
+	});
+
+	return newArray;
+}
+function searchByGender(people){
+	let userInputGender = prompt("what is the persons gender?");
+
+	let newArray = people.filter(function (el){
+		if(el.gender == userInputGender){
+			return el.gender;
+		}
+	});
 	return newArray;
 }
 
@@ -148,16 +180,16 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-	if(!people[person]){
+	if(!person){
 		alert("Could not find that individual.");
 		return app(people); // restart
 	}
 
-	var displayOption = prompt("Found " + people[person].firstName + " " + people[person].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+	var displayOption = prompt("Found " +person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
 	switch(displayOption){
 		case "info":
-			displayTraits(people[person]);
+			displayTraits(person);
 			break;
 		case "family":
 			// TODO: get person's family

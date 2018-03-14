@@ -94,22 +94,27 @@ function searchByTraits(people) {
 	switch(userSearchChoice) {
 	case "height":
 		filteredPeople = searchByHeight(people);
+		displayPeople(filteredPeople);
 		break;
 	case "weight":
 		filteredPeople = searchByWeight(people);
+		displayPeople(filteredPeople);
 		break;
 	case "age":
-		filteredpeople = searchByAge(people);
+		filteredPeople = searchByAge(people);
+		displayPeople(filteredPeople);
 		break;
-	case "eyecolor":
-		filteredpeople = searchByEyeColor(people);
+	case "eye color":
+		filteredPeople = searchByEyeColor(people);
+		displayPeople(filteredPeople);
 		break;
 	case "occupation":
-		filteredpeople = searchByOccupation(people);
+		filteredPeople = searchByOccupation(people);
+		displayPeople(filteredPeople);
 		break;
 	case "gender":
 		filteredPeople = searchByGender(people);
-		displayPeople (filteredPeople);
+		displayPeople(filteredPeople);
 		break;
 
 	default:
@@ -124,6 +129,17 @@ function searchByTraits(people) {
 
 }
 
+function searchByHeight(people) {
+	let userInputHeight = prompt("what is the persons height?");
+
+	let newArray = people.filter(function (el) {
+		if(el.height == userInputHeight) {
+			return true;
+		}
+	});
+	return newArray;
+}
+
 function searchByWeight(people) {
 	let userInputWeight = prompt("How much does the person weigh?");
 
@@ -136,17 +152,18 @@ function searchByWeight(people) {
 	return newArray;
 }
 
-function searchByHeight(people) {
-	let userInputHeight = prompt("what is the persons height?");
+function searchByEyeColor(people) {
+	let userInputWeight = prompt("What is the persons eye color?");
 
 	let newArray = people.filter(function (el) {
-		if(el.height == userInputHeight) {
-			return true;
+		if(el.eyeColor == userInputWeight) {
+		return true;
 		}
 	});
 
 	return newArray;
 }
+
 function searchByGender(people){
 	let userInputGender = prompt("what is the persons gender?");
 
@@ -168,19 +185,23 @@ function buildDescendants(personID, people) {
 		}
 	});
 	
-	// recursively build onto 'descendants'
-	descendants = descendants.concat(addDescendants);
-	console.log(descendants);
-
-	// if addDescendants not empty ...
-	if(descendants.length > 0) {
-		for (let i = 0; i < descendants.length; i++) {
+	// descendants = descendants.concat(addDescendants);
+	// console.log("First go: " + descendants);
+	if(addDescendants.length) {
+		for (let i = 0; i < addDescendants.length; i++) {
+			console.log(addDescendants[i].id);
 			//buildDescendants(/* whom */, people);
-			buildDescendants(descendants[i].id, people);	
+			buildDescendants(addDescendants[i].id, people);	
 		}
 	}
-	return descendants;
+	return descendants.concat(addDescendants);
 }
+
+function search(input, people) {
+	makeArray(input);
+	console.log(input);
+}
+
 
 function echoName(person, people) {
 	for (let i = 0; i < people.length; i++) {

@@ -34,7 +34,7 @@ function searchByFullName(people) {
 		restart("Error, please put in first and last name only");
 	} else {
 		for(let i = 0; i < people.length; i++) {
-			if(matchTrait(userSearchSplit[0], people[i].firstName) && matchTrait(userSearchSplit[1], people[i].lastName)) {
+			if(matchWord(userSearchSplit[0], people[i].firstName) && matchWord(userSearchSplit[1], people[i].lastName)) {
 				//console.log(people[i].id + ": " + people[i].firstName + " " + people[i].lastName);
 				mainMenu(people[i].id, people);
 			}
@@ -71,7 +71,7 @@ function makeArray(inputString) {
 	return inputString.split(" ");
 }
 
-function matchTrait(word, trait) {
+function matchWord(word, trait) {
 	if(lowerCase(word).includes(lowerCase(trait))) {
 		return true;
 	}else{
@@ -95,37 +95,60 @@ function searchByTraits(people) {
 	let filteredGender;
 	let filteredAge;
 	let filteredOccupation;
-	
-	switch(userSearchChoice) {
-	case "height":
-		filteredHeight = searchByHeight(people);
-		displayPeople(filteredHeight);
-		break;
-	case "weight":
-		filteredWeight = searchByWeight(people);
-		displayPeople(filteredWeight);
-		break;
-	case "eye color":
-		filteredEyeColor = searchByEyeColor(people);
-		displayPeople(filteredEyeColor);
-		break;
-	case "gender":
-		filteredGender = searchByGender(people);
-		displayPeople(filteredGender);
-		break;
-	case "age":
-		filteredAge = searchByAge(people);
-		displayPeople(filteredAge);
-		break;
-	case "occupation":
-		filteredOccupation = searchByOccupation(people);
-		displayPeople(filteredOccupation);
-		break;
-	default:
-		alert("You entered an invalid search type! Please try again.");
-		searchByTraits(people);
-		break;
-	}  
+
+	makeArray(userSearchChoice);
+
+	for (let i = 0; i < userSearchChoice.length; i++) {
+		if(userSearchChoice[i] === "height") {
+
+		}
+		if(userSearchChoice[i] === "height") {
+			
+		}
+		if(userSearchChoice[i] === "height") {
+			
+		}
+		if(userSearchChoice[i] === "height") {
+			
+		}
+		if(userSearchChoice[i] === "height") {
+			
+		}
+		if(userSearchChoice[i] === "height") {
+			
+		}
+		
+	}
+	// switch(userSearchChoice) {
+	// case "height":
+	// 	filteredHeight = searchByHeight(people);
+	// 	displayPeople(filteredHeight);
+	// 	break;
+	// case "weight":
+	// 	filteredWeight = searchByWeight(people);
+	// 	displayPeople(filteredWeight);
+	// 	break;
+	// case "eye color":
+	// 	filteredEyeColor = searchByEyeColor(people);
+	// 	displayPeople(filteredEyeColor);
+	// 	break;
+	// case "gender":
+	// 	filteredGender = searchByGender(people);
+	// 	displayPeople(filteredGender);
+	// 	break;
+	// case "age":
+	// 	filteredAge = searchByAge(people);
+	// 	displayPeople(filteredAge);
+	// 	break;
+	// case "occupation":
+	// 	filteredOccupation = searchByOccupation(people);
+	// 	displayPeople(filteredOccupation);
+	// 	break;
+	// default:
+	// 	alert("You entered an invalid search type! Please try again.");
+	// 	searchByTraits(people);
+	// 	break;
+	// }  
 
 	let foundPerson = filteredPeople[0];
 

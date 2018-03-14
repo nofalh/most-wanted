@@ -100,23 +100,22 @@ function searchByTraits(people) {
 		filteredPeople = searchByWeight(people);
 		displayPeople(filteredPeople);
 		break;
-	case "age":
-		filteredPeople = searchByAge(people);
-		displayPeople(filteredPeople);
-		break;
 	case "eye color":
 		filteredPeople = searchByEyeColor(people);
-		displayPeople(filteredPeople);
-		break;
-	case "occupation":
-		filteredPeople = searchByOccupation(people);
 		displayPeople(filteredPeople);
 		break;
 	case "gender":
 		filteredPeople = searchByGender(people);
 		displayPeople(filteredPeople);
 		break;
-
+	case "age":
+		filteredPeople = searchByAge(people);
+		displayPeople(filteredPeople);
+		break;
+	case "occupation":
+		filteredPeople = searchByOccupation(people);
+		displayPeople(filteredPeople);
+		break;
 	default:
 		alert("You entered an invalid search type! Please try again.");
 		searchByTraits(people);
@@ -131,7 +130,6 @@ function searchByTraits(people) {
 
 function searchByHeight(people) {
 	let userInputHeight = prompt("what is the persons height?");
-
 	let newArray = people.filter(function (el) {
 		if(el.height == userInputHeight) {
 			return true;
@@ -142,34 +140,52 @@ function searchByHeight(people) {
 
 function searchByWeight(people) {
 	let userInputWeight = prompt("How much does the person weigh?");
-
 	let newArray = people.filter(function (el) {
 		if(el.weight == userInputWeight) {
 		return true;
 		}
 	});
-
 	return newArray;
 }
 
 function searchByEyeColor(people) {
 	let userInputWeight = prompt("What is the persons eye color?");
-
 	let newArray = people.filter(function (el) {
 		if(el.eyeColor == userInputWeight) {
 		return true;
 		}
 	});
-
 	return newArray;
 }
 
 function searchByGender(people){
 	let userInputGender = prompt("what is the persons gender?");
-
 	let newArray = people.filter(function (el){
 		if(el.gender == userInputGender){
 			return el.gender;
+		}
+	});
+	return newArray;
+}
+
+function searchByAge(people){
+	let userInputAge = prompt("what is the persons age?");
+	let d = new Date();
+	let currentYear = d.getFullYear();
+	let newArray = people.filter(function (el){
+		let userAgeSplit = el.dob.split("/");
+		if((currentYear - userAgeSplit[2]) == userInputAge){
+			return true;
+		}
+	});
+	return newArray;
+}
+
+function searchByOccupation(people){
+	let userInputOccupation = prompt("what is the persons age?");
+	let newArray = people.filter(function (el){
+		if(el.occupation == userInputOccupation){
+			return el.occupation;
 		}
 	});
 	return newArray;

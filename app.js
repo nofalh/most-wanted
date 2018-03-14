@@ -61,8 +61,8 @@ function makeArray(inputString) {
 	return inputString.split(" ");
 }
 
-function matchWord(word, trait) {
-	if(lowerCase(word).includes(lowerCase(trait))) {
+function matchWord(word, search) {
+	if(lowerCase(word).includes(lowerCase(search))) {
 		return true;
 	}else{
 		return false;
@@ -85,30 +85,42 @@ function searchByTraits(people) {
 	let filteredGender;
 	let filteredAge;
 	let filteredOccupation;
+	let displayThesePeople = [];
+	let choices = makeArray(userSearchChoice);
 
-	makeArray(userSearchChoice);
-
-	for (let i = 0; i < userSearchChoice.length; i++) {
-		if(userSearchChoice[i] === "height") {
-
+	for (let i = 0; i < choices.length; i++) {
+		if(choices[i].includes("height")) {
+			filteredHeight = searchByHeight(people);
+	 		Array.prototype.push.apply(displayThesePeople, filteredHeight);
 		}
-		if(userSearchChoice[i] === "height") {
-			
+		else if(choices[i].includes("weight")) {
+			filteredWeight = searchByWeight(people);
+			Array.prototype.push.apply(displayThesePeople, filteredWeight);
 		}
-		if(userSearchChoice[i] === "height") {
-			
+		else if(choices[i].includes("eye")) {
+			filteredEyeColor = searchByEyeColor(people);
+			Array.prototype.push.apply(displayThesePeople, filteredEyeColor);
 		}
-		if(userSearchChoice[i] === "height") {
-			
+		else if(choices[i].includes("gender")) {
+			filteredGender = searchByGender(people);
+			Array.prototype.push.apply(displayThesePeople, filteredGender);
 		}
-		if(userSearchChoice[i] === "height") {
-			
+		else if(choices[i].includes("age")) {
+			filteredAge = searchByAge(people);
+			Array.prototype.push.apply(displayThesePeople, filteredAge);
 		}
-		if(userSearchChoice[i] === "height") {
-			
+		else if(choices[i].includes("occupation")) {
+			filteredOccupation = searchByOccupation(people);
+			Array.prototype.push.apply(displayThesePeople, filteredOccupation);
+		} else {
+			alert("You entered an invalid search type! Please try again.");
+	 		searchByTraits(people);
 		}
-		
 	}
+	console.log(displayThesePeople);
+
+	displayPeople(displayThesePeople);
+
 	// switch(userSearchChoice) {
 	// case "height":
 	// 	filteredHeight = searchByHeight(people);
@@ -140,7 +152,7 @@ function searchByTraits(people) {
 	// 	break;
 	// }  
 
-	let foundPerson = filteredPeople[0];
+	//let foundPerson = filteredPeople[0];
 
 	mainMenu(foundPerson, people);
 

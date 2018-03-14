@@ -35,7 +35,8 @@ function searchByFullName(people) {
 	} else {
 		for(let i = 0; i < people.length; i++) {
 			if(matchTrait(userSearchSplit[0], people[i].firstName) && matchTrait(userSearchSplit[1], people[i].lastName)) {
-				mainMenu(i, people);
+				//console.log(people[i].id + ": " + people[i].firstName + " " + people[i].lastName);
+				mainMenu(people[i].id, people);
 			}
 		}
 	}	
@@ -156,26 +157,7 @@ function searchByGender(people){
 	return newArray;
 }
 
-function buildDescendants(people, array, count, maxcount) {
-	
-	if(count >= maxcount) {
-		return array;
-	}	
-
-	if(people[count].parents.length > 0) {
-		for (let i = 0; i < parents.length; i++) {
-			// push parent id to array here
-			// include id, in this case i
-			
-		}
-
-	}
-	
-	count++;
-	buildDescendants(people, array, count, maxcount);
-}
-
-function instructorDesc(person, people) {
+function buildDescendants(person, people) {
 
 	let descendants = people.filter(function (el) {
 		for(let i = 0; i < el.parents.length; i++){
@@ -187,7 +169,7 @@ function instructorDesc(person, people) {
 
 	// recursively build onto 'descendants'
 
-	//instructorDesc(/* whom */, people);
+	//buildDescendants(/* whom */, people);
 }
 
 // Menu function to call once you find who you are looking for
@@ -211,7 +193,7 @@ function mainMenu(person, people){
 			break;
 		case "descendants":
 			let descendants = [];
-			descendants = buildDescendants(people, descendants, 0, people.length);
+			descendants = buildDescendants(person, people);
 			//console.log(descendants);
 			//getDescendants(person, people);
 			break;

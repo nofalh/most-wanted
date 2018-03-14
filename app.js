@@ -175,6 +175,21 @@ function buildDescendants(people, array, count, maxcount) {
 	buildDescendants(people, array, count, maxcount);
 }
 
+function instructorDesc(person, people) {
+
+	let descendants = people.filter(function (el) {
+		for(let i = 0; i < el.parents.length; i++){
+			if(el.parents[i] === person.id) {
+				return true;
+			}
+		}
+	});
+
+	// recursively build onto 'descendants'
+
+	//instructorDesc(/* whom */, people);
+}
+
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 

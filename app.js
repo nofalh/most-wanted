@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 
 function app(people){
 
@@ -98,18 +98,19 @@ function searchByTraits(people) {
 		filteredPeople = searchByWeight(people);
 		break;
 	case "age":
-		filteredpeople = searchByAge(people);
+		filteredPeople = searchByAge(people);
 		break;
 	case "eyecolor":
-		filteredpeople = searchByEyeColor(people);
+		filteredPeople = searchByEyeColor(people);
 		break;
 	case "occupation":
-		filteredpeople = searchByOccupation(people);
+		filteredPeople = searchByOccupation(people);
 		break;
 	case "gender":
 		filteredPeople = searchByGender(people);
 		displayPeople (filteredPeople);
 		break;
+
 
 	default:
 		alert("You entered an invalid search type! Please try again.");
@@ -155,6 +156,37 @@ function searchByGender(people){
 	});
 	return newArray;
 }
+	function searchByAge(people){
+		let userInputAge = prompt("how old is the person?");
+		 
+		let newArray = people.filter(function (el){
+			if(el.age === userInputAge){
+				return true;
+			}
+		});
+		return newArray;
+	}
+
+	function seachByEyeColor(people){
+		let userInputEyeColor = prompt("what is the persons eye color?");
+
+		let newArray = people.filter(function (el){
+			if(el.eyecolor == userInputEyeColor){
+				return el.eyecolor;
+			}
+		});
+		return newArray;
+	}
+	function seachByOccupation(people){
+		let userInputOccupation = prompt("what is the persons occupation?");
+
+		let newArray = people.filter(function (el){
+			if(el.occupation == userInputOccupation){
+				return true;
+			}
+		});
+		return newArray; 
+	}
 
 function buildDescendants(people, array, count, maxcount) {
 	

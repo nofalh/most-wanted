@@ -105,41 +105,8 @@ function searchByTraits(people) {
 		// TODO: add proper fail logic
 	}
 
-	// Deprecated menu:
-	//alert("You entered an invalid search type! Please try again.");
-	//searchByTraits(people);
-	// switch(userSearchChoice) {
-	// case "height":
-	// 	filteredHeight = searchByHeight(people);
-	// 	displayPeople(filteredHeight);
-	// 	break;
-	// case "weight":
-	// 	filteredWeight = searchByWeight(people);
-	// 	displayPeople(filteredWeight);
-	// 	break;
-	// case "eye color":
-	// 	filteredEyeColor = searchByEyeColor(people);
-	// 	displayPeople(filteredEyeColor);
-	// 	break;
-	// case "gender":
-	// 	filteredGender = searchByGender(people);
-	// 	displayPeople(filteredGender);
-	// 	break;
-	// case "age":
-	// 	filteredAge = searchByAge(people);
-	// 	displayPeople(filteredAge);
-	// 	break;
-	// case "occupation":
-	// 	filteredOccupation = searchByOccupation(people);
-	// 	displayPeople(filteredOccupation);
-	// 	break;
-	// default:
-	// 	alert("You entered an invalid search type! Please try again.");
-	// 	searchByTraits(people);
-	// 	break;
-	// }  
 
-	//let foundPerson = filteredPeople[0];
+
 
 	if(displayThesePeople.length <= 1) {
 		mainMenu(displayThesePeople[0].id, people);
@@ -236,16 +203,28 @@ function searchByFullName(people) {
 
 function buildDescendants(personID, people) {
 	let descendants = [];
-	let addDescendants = people.filter(function (el) {
-		for(let i = 0; i < el.parents.length; i++){
-			if(el.parents[i] === personID) {
-				return true;
+	// let addDescendants = [];
+
+	if(people.length <= 0) {
+		console.log("Empty");
+		return descendants;
+	} else {
+		descendants = people.filter(function (el) {
+			for(let i = 0; i < el.parents.length; i++){
+				if(el.parents[i] === personID) {
+					return true;
+				}
 			}
+		});
+		for (let i = 0; i < descendants.length; i++){
+			descendants = descendants.concat(buildDescendants(descendants[i].id, people));
 		}
-	});
+		// call each descants through buildDescendants?
+	}
 	
-	return addDescendants;
+	return descendants;
 }
+
 
 function search(input, people) {
 	makeArray(input);
@@ -291,7 +270,7 @@ function mainMenu(person, people){
 		case "descendants":
 			let descendants = [];
 			descendants = buildDescendants(person, people);
-			console.log(descendants);
+			displayPeople(descendants);
 			break;
 		case "restart":
 			app(people);

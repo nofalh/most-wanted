@@ -17,29 +17,29 @@ function app(people){
 	}
 }
 
-function searchByFullName(people) {
-	let userSearchChoice = prompt("Please enter in first and last name");
-	let userSearchSplit = makeArray(userSearchChoice);
-	if (userSearchSplit.length > 2) {
-		restart("Error, please put in first and last name only");
-	} else {
-		for(let i = 0; i < people.length; i++) {
-			if(matchWord(userSearchSplit[0], people[i].firstName) && matchWord(userSearchSplit[1], people[i].lastName)) {
-				//console.log(people[i].id + ": " + people[i].firstName + " " + people[i].lastName);
-				mainMenu(people[i].id, people);
+function displayTraits(person, people) {
+	//console.log(person);
+	let message = ""; 
+
+	for (let i = 0; i < people.length; i++) {
+		if(people[i].id === person) {
+			for (var key in people[i]) {
+				if (person.hasOwnProperty(key)) {
+					//console.log(key + " -> " + person[key]);
+					message += key + ": " + person[key] + "\r\n";
+				}
 			}
 		}
-	}	
-}
-
-function displayTraits(person) {
-	let message = ""; 
-	for (var key in person) {
-		if (person.hasOwnProperty(key)) {
-		  //console.log(key + " -> " + person[key]);
-		  message += key + ": " + person[key] + "\r\n";
-		}
+		
 	}
+
+	
+	// for (var key in person) {
+	// 	if (person.hasOwnProperty(key)) {
+	// 	  //console.log(key + " -> " + person[key]);
+	// 	  message += key + ": " + person[key] + "\r\n";
+	// 	}
+	// }
 	alert(message);
 }
 
@@ -222,6 +222,28 @@ function searchByOccupation(people){
 	return newArray;
 }
 
+function searchByFullName(people) {
+	let userSearchChoice = prompt("Please enter in first and last name");
+	let userSearchSplit = makeArray(userSearchChoice);
+	if (userSearchSplit.length > 2) {
+		restart("Error, please put in first and last name only");
+	} else {
+		for(let i = 0; i < people.length; i++) {
+			if(matchWord(userSearchSplit[0], people[i].firstName) && matchWord(userSearchSplit[1], people[i].lastName)) {
+				//console.log(people[i].id + ": " + people[i].firstName + " " + people[i].lastName);
+				mainMenu(people[i].id, people);
+			}
+		}
+	}	
+}
+
+// // Deprecated starter function
+// function searchByName(people){
+// 	var firstName = promptFor("What is the person's first name?", chars);
+// 	var lastName = promptFor("What is the person's last name?", chars);
+// 	// TODO: find the person using the name they entered
+// }
+
 function buildDescendants(personID, people) {
 	let descendants = [];
 	let addDescendants = people.filter(function (el) {
@@ -291,13 +313,7 @@ function mainMenu(person, people){
 	}
 }
 
-function searchByName(people){
-	var firstName = promptFor("What is the person's first name?", chars);
-	var lastName = promptFor("What is the person's last name?", chars);
 
-	// TODO: find the person using the name they entered
-
-}
 
 // alerts a list of people
 function displayPeople(people){

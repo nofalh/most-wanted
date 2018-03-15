@@ -70,12 +70,6 @@ function searchByTraits(people) {
 	let filtered = people;
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
-	
-	// for (let i = 0; i < choices.length; i++) {
-	// 	if(choices[i] != "height" || "weight" || "eye" || "eye color"|| "gender" || "age" || "occupation") {
-	// 		app(people);
-	// 	}
-	// }
 
 	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
@@ -102,7 +96,8 @@ function searchByTraits(people) {
 	}
 
 	if(filtered.length <= 1) {
-		mainMenu(filtered[0].id, people);
+		alert("Please choose valid input!");
+		app(people);
 	} else {
 		displayPeople(filtered);
 		app(people);

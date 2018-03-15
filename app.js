@@ -187,24 +187,15 @@ function searchByFullName(people) {
 	} else {
 		for(let i = 0; i < people.length; i++) {
 			if(matchWord(userSearchSplit[0], people[i].firstName) && matchWord(userSearchSplit[1], people[i].lastName)) {
-				//console.log(people[i].id + ": " + people[i].firstName + " " + people[i].lastName);
 				mainMenu(people[i].id, people);
 			}
 		}
 	}	
 }
 
-// // Deprecated starter function
-// function searchByName(people){
-// 	var firstName = promptFor("What is the person's first name?", chars);
-// 	var lastName = promptFor("What is the person's last name?", chars);
-// 	// TODO: find the person using the name they entered
-// }
-
 function buildDescendants(personID, people) {
+	// TODO: tidy this up, extremely slooppy currently
 	let descendants = [];
-	// let addDescendants = [];
-
 	if(people.length <= 0) {
 		console.log("Empty");
 		return descendants;
@@ -219,9 +210,7 @@ function buildDescendants(personID, people) {
 		for (let i = 0; i < descendants.length; i++){
 			descendants = descendants.concat(buildDescendants(descendants[i].id, people));
 		}
-		// call each descants through buildDescendants?
 	}
-	
 	return descendants;
 }
 
@@ -248,11 +237,7 @@ function getIndex(person, people) {
 	}
 }
 
-// Menu function to call once you find who you are looking for
 function mainMenu(person, people){
-
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
 	if(!person){
 		alert("Could not find that individual.");
 		return app(people); // restart
@@ -268,8 +253,7 @@ function mainMenu(person, people){
 			// TODO: get person's family
 			break;
 		case "descendants":
-			let descendants = [];
-			descendants = buildDescendants(person, people);
+			let descendants = buildDescendants(person, people);
 			displayPeople(descendants);
 			break;
 		case "restart":

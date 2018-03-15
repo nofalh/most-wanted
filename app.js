@@ -102,16 +102,12 @@ function searchByTraits(people) {
 			filteredOccupation = searchByOccupation(people);
 			Array.prototype.push.apply(displayThesePeople, filteredOccupation);
 		}
+		// TODO: add proper fail logic
 	}
 
-	// TODO: Proper non matching else logic
+	// Deprecated menu:
 	//alert("You entered an invalid search type! Please try again.");
 	//searchByTraits(people);
-		 
-	console.log(displayThesePeople);
-
-	displayPeople(displayThesePeople);
-
 	// switch(userSearchChoice) {
 	// case "height":
 	// 	filteredHeight = searchByHeight(people);
@@ -145,8 +141,12 @@ function searchByTraits(people) {
 
 	//let foundPerson = filteredPeople[0];
 
-	mainMenu(foundPerson, people);
-
+	if(displayThesePeople.length <= 1) {
+		mainMenu(displayThesePeople[0].id, people);
+	} else {
+		displayPeople(displayThesePeople);
+		app(people);
+	}
 }
 
 function searchByHeight(people) {

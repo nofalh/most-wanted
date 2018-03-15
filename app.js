@@ -214,6 +214,9 @@ function buildDescendants(personID, people) {
 	return descendants;
 }
 
+function buildFamily(personID, people) {
+	console.log("Family";)
+}
 
 function search(input, people) {
 	makeArray(input);
@@ -251,6 +254,8 @@ function mainMenu(person, people){
 			break;
 		case "family":
 			// TODO: get person's family
+			let family = buildFamily(person, people);
+			displayPeople(family);
 			break;
 		case "descendants":
 			let descendants = buildDescendants(person, people);

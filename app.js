@@ -81,20 +81,23 @@ function searchByTraits(people) {
 		if(choices[i].includes("height")) {
 			filtered = searchByHeight(filtered);	
 		}
-		if(choices[i].includes("weight")) {
+		else if(choices[i].includes("weight")) {
 			filtered = searchByWeight(filtered);	
 		}
-		if(choices[i].includes("eye")) {
+		else if(choices[i].includes("eye")) {
 			filtered = searchByEyeColor(filtered);	
 		}
-		if(choices[i].includes("gender")) {
+		else if(choices[i].includes("gender")) {
 			filtered = searchByGender(filtered);
 		}
-		if(choices[i].includes("age")) {
+		else if(choices[i].includes("age")) {
 			filtered = searchByAge(filtered);
 		}
-		if(choices[i].includes("occupation")) {
+		else if(choices[i].includes("occupation")) {
 			filtered = searchByOccupation(filtered);	
+		} else {
+			alert("Please choose valid input!");
+			app(people);
 		}
 	}
 

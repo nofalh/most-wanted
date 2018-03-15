@@ -18,28 +18,17 @@ function app(people){
 }
 
 function displayTraits(person, people) {
-	//console.log(person);
 	let message = ""; 
-
 	for (let i = 0; i < people.length; i++) {
 		if(people[i].id === person) {
 			for (var key in people[i]) {
-				if (person.hasOwnProperty(key)) {
-					//console.log(key + " -> " + person[key]);
-					message += key + ": " + person[key] + "\r\n";
+				if (people[i].hasOwnProperty(key)) {
+					message += key + ": " + people[i][key] + "\r\n";
 				}
 			}
 		}
 		
 	}
-
-	
-	// for (var key in person) {
-	// 	if (person.hasOwnProperty(key)) {
-	// 	  //console.log(key + " -> " + person[key]);
-	// 	  message += key + ": " + person[key] + "\r\n";
-	// 	}
-	// }
 	alert(message);
 }
 
@@ -293,7 +282,7 @@ function mainMenu(person, people){
 
 	switch(displayOption){
 		case "info":
-			displayTraits(person);
+			displayTraits(person, people);
 			break;
 		case "family":
 			// TODO: get person's family

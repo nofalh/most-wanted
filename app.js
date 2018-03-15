@@ -93,29 +93,30 @@ function searchByTraits(people) {
 			filteredHeight = searchByHeight(people);
 	 		Array.prototype.push.apply(displayThesePeople, filteredHeight);
 		}
-		else if(choices[i].includes("weight")) {
+		if(choices[i].includes("weight")) {
 			filteredWeight = searchByWeight(people);
 			Array.prototype.push.apply(displayThesePeople, filteredWeight);
 		}
-		else if(choices[i].includes("eye")) {
+		if(choices[i].includes("eye")) {
 			filteredEyeColor = searchByEyeColor(people);
 			Array.prototype.push.apply(displayThesePeople, filteredEyeColor);
 		}
-		else if(choices[i].includes("gender")) {
+		if(choices[i].includes("gender")) {
 			filteredGender = searchByGender(people);
 			Array.prototype.push.apply(displayThesePeople, filteredGender);
 		}
-		else if(choices[i].includes("age")) {
+		if(choices[i].includes("age")) {
 			filteredAge = searchByAge(people);
 			Array.prototype.push.apply(displayThesePeople, filteredAge);
 		}
-		else if(choices[i].includes("occupation")) {
+		if(choices[i].includes("occupation")) {
 			filteredOccupation = searchByOccupation(people);
 			Array.prototype.push.apply(displayThesePeople, filteredOccupation);
-		} else {
-			alert("You entered an invalid search type! Please try again.");
-	 		searchByTraits(people);
 		}
+		
+		alert("You entered an invalid search type! Please try again.");
+	 	searchByTraits(people);
+		
 	}
 	console.log(displayThesePeople);
 
@@ -231,16 +232,7 @@ function buildDescendants(personID, people) {
 		}
 	});
 	
-	// descendants = descendants.concat(addDescendants);
-	// console.log("First go: " + descendants);
-	if(addDescendants.length) {
-		for (let i = 0; i < addDescendants.length; i++) {
-			console.log(addDescendants[i].id);
-			//buildDescendants(/* whom */, people);
-			buildDescendants(addDescendants[i].id, people);	
-		}
-	}
-	return descendants.concat(addDescendants);
+	return addDescendants;
 }
 
 function search(input, people) {

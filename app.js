@@ -273,7 +273,7 @@ function buildDescendants(personID, people) {
 }
 
 function buildFamily(personID, people) {
-	console.log("Family";)
+	console.log("Family");
 }
 
 function search(input, people) {

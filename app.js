@@ -273,7 +273,19 @@ function buildDescendants(personID, people) {
 }
 
 function buildFamily(personID, people) {
-	console.log("Family");
+	
+	let person = getIndex(personID, people);
+	let family = [];
+	//console.log(people[person]);
+
+	for(var el in people) {
+		if(people[el].lastName === people[person].lastName) {
+			console.log(people[el].firstName + " " + people[el].lastName);
+		}
+		
+	}
+	
+
 }
 
 function search(input, people) {
@@ -313,7 +325,7 @@ function mainMenu(person, people){
 		case "family":
 			// TODO: get person's family
 			let family = buildFamily(person, people);
-			displayPeople(family);
+			//displayPeople(family);
 			break;
 		case "descendants":
 			let descendants = buildDescendants(person, people);

@@ -72,11 +72,11 @@ function searchByTraits(people) {
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
 	
-	for (let i = 0; i < choices.length; i++) {
-		if(choices[i] != "height" || "weight" || "eye" || "eye color"|| "gender" || "age" || "occupation") {
-			app(people);
-		}
-	}
+	// for (let i = 0; i < choices.length; i++) {
+	// 	if(choices[i] != "height" || "weight" || "eye" || "eye color"|| "gender" || "age" || "occupation") {
+	// 		app(people);
+	// 	}
+	// }
 
 	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
@@ -97,8 +97,6 @@ function searchByTraits(people) {
 		if(choices[i].includes("occupation")) {
 			filtered = searchByOccupation(filtered);	
 		}
-		
-		// TODO: add proper fail logic
 	}
 
 	if(filtered.length <= 1) {

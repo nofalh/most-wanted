@@ -71,36 +71,31 @@ function searchByTraits(people) {
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
 	
-	
+	// for (let i = 0; i < choices.length; i++) {
+	// 	if(choices[i] != "height" || "weight" || "eye" || "eye color"|| "gender" || "age" || "occupation") {
+	// 		app(people);
+	// 	}
+	// }
 
 	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
-			filtered = searchByHeight(filtered);
-	 		
+			filtered = searchByHeight(filtered);	
 		}
-
 		if(choices[i].includes("weight")) {
-			filtered = searchByWeight(filtered);
-			
+			filtered = searchByWeight(filtered);	
 		}
 		if(choices[i].includes("eye")) {
-			filtered = searchByEyeColor(filtered);
-			
+			filtered = searchByEyeColor(filtered);	
 		}
 		if(choices[i].includes("gender")) {
 			filtered = searchByGender(filtered);
-		
 		}
 		if(choices[i].includes("age")) {
 			filtered = searchByAge(filtered);
-			
 		}
 		if(choices[i].includes("occupation")) {
-			filtered = searchByOccupation(filtered);
-			
+			filtered = searchByOccupation(filtered);	
 		}
-		
-		// TODO: add proper fail logic
 	}
 
 	if(filtered.length <= 1) {
@@ -243,12 +238,14 @@ function buildDescendants(personID, people) {
 function buildFamily(personID, people) {
 	let person = getIndex(personID, people);
 	let family = [];
-
 	for(var el in people) {
-		if(people[el].lastName === people[person].lastName) {
+		if(people[el].lastName === people[person].lastName && people[el].firstName != people[person].firstName) {
 			//console.log(people[el].firstName + " " + people[el].lastName);
 			family.push(people[el]);
 		}
+	}
+	for (let i = 0; i < people[person].parents.length; i++) {
+		family.push(people[person].parents);
 	}
 	return family;
 }

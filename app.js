@@ -273,7 +273,7 @@ function buildFamily(personID, people) {
 	for(var el in people) {
 		if(people[el].lastName === people[person].lastName) {
 			//console.log(people[el].firstName + " " + people[el].lastName);
-			family = family.push(people[el].firstName + " " + people[el].lastName);
+			family.push(people[el]);
 		}
 	}
 	return family;
@@ -316,7 +316,7 @@ function mainMenu(person, people){
 		case "family":
 			// TODO: get person's family
 			let family = buildFamily(person, people);
-			//displayPeople(family);
+			displayPeople(family);
 			break;
 		case "descendants":
 			let descendants = buildDescendants(person, people);

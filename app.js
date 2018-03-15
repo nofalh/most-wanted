@@ -68,39 +68,34 @@ function lowerCase(word) {
 
 function searchByTraits(people) {
 	let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
-	let filteredHeight;
-	let filteredWeight;
-	let filteredEyeColor;
-	let filteredGender;
-	let filteredAge;
-	let filteredOccupation;
+	let filtered;
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
 
 	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
-			filteredHeight = searchByHeight(people);
-	 		Array.prototype.push.apply(displayThesePeople, filteredHeight);
+			filtered = searchByHeight(people);
+	 		Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		if(choices[i].includes("weight")) {
-			filteredWeight = searchByWeight(people);
-			Array.prototype.push.apply(displayThesePeople, filteredWeight);
+			filtered = searchByWeight(people);
+			Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		if(choices[i].includes("eye")) {
-			filteredEyeColor = searchByEyeColor(people);
-			Array.prototype.push.apply(displayThesePeople, filteredEyeColor);
+			filtered = searchByEyeColor(people);
+			Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		if(choices[i].includes("gender")) {
-			filteredGender = searchByGender(people);
-			Array.prototype.push.apply(displayThesePeople, filteredGender);
+			filtered = searchByGender(people);
+			Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		if(choices[i].includes("age")) {
-			filteredAge = searchByAge(people);
-			Array.prototype.push.apply(displayThesePeople, filteredAge);
+			filtered = searchByAge(people);
+			Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		if(choices[i].includes("occupation")) {
-			filteredOccupation = searchByOccupation(people);
-			Array.prototype.push.apply(displayThesePeople, filteredOccupation);
+			filtered = searchByOccupation(people);
+			Array.prototype.push.apply(displayThesePeople, filtered);
 		}
 		// TODO: add proper fail logic
 	}

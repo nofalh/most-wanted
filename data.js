@@ -1,5 +1,3 @@
-// This file to be deleted before final version
-// Ues this file to test stuff in node/terminal
 const data = [
 	{
 		"id": 272822514,

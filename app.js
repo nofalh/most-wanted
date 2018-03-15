@@ -68,72 +68,47 @@ function lowerCase(word) {
 
 function searchByTraits(people) {
 	let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
-	let filtered;
+	let newArray =[];
+	let filtered = people;
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
+	
+	
 
 	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
-			filtered = searchByHeight(people);
-	 		Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByHeight(filtered);
+	 		
 		}
+
 		if(choices[i].includes("weight")) {
-			filtered = searchByWeight(people);
-			Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByWeight(filtered);
+			
 		}
 		if(choices[i].includes("eye")) {
-			filtered = searchByEyeColor(people);
-			Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByEyeColor(filtered);
+			
 		}
 		if(choices[i].includes("gender")) {
-			filtered = searchByGender(people);
-			Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByGender(filtered);
+		
 		}
 		if(choices[i].includes("age")) {
-			filtered = searchByAge(people);
-			Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByAge(filtered);
+			
 		}
 		if(choices[i].includes("occupation")) {
-			filtered = searchByOccupation(people);
-			Array.prototype.push.apply(displayThesePeople, filtered);
+			filtered = searchByOccupation(filtered);
+			
 		}
+		
 		// TODO: add proper fail logic
 	}
 
-	// switch(userSearchChoice) {
-	// case "height":
-	// 	filteredPeople = searchByHeight(people);
-	// 	break;
-	// case "weight":
-	// 	filteredPeople = searchByWeight(people);
-	// 	break;
-	// case "age":
-	// 	filteredPeople = searchByAge(people);
-	// 	break;
-	// case "eyecolor":
-	// 	filteredPeople = searchByEyeColor(people);
-	// 	break;
-	// case "occupation":
-	// 	filteredPeople = searchByOccupation(people);
-	// 	break;
-	// case "gender":
-	// 	filteredPeople = searchByGender(people);
-	// 	displayPeople (filteredPeople);
-	// 	break;
-
-
-	// default:
-	// 	alert("You entered an invalid search type! Please try again.");
-	// 	searchByTraits(people);
-	// 	break;
-	// }  
-
-
-
-	if(displayThesePeople.length <= 1) {
-		mainMenu(displayThesePeople[0].id, people);
+	if(filtered.length <= 1) {
+		mainMenu(filtered[0].id, people);
 	} else {
-		displayPeople(displayThesePeople);
+		displayPeople(filtered);
 		app(people);
 	}
 }

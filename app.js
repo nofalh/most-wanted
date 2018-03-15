@@ -1,7 +1,6 @@
  "use strict";
 
 function app(people){
-
 	let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
 	switch(searchType){
 		case 'yes':
@@ -255,7 +254,7 @@ function buildDescendants(personID, people) {
 	// TODO: tidy this up, extremely slooppy currently
 	let descendants = [];
 	if(people.length <= 0) {
-		console.log("Empty");
+		//console.log("Empty");
 		return descendants;
 	} else {
 		descendants = people.filter(function (el) {
@@ -273,19 +272,16 @@ function buildDescendants(personID, people) {
 }
 
 function buildFamily(personID, people) {
-	
 	let person = getIndex(personID, people);
 	let family = [];
-	//console.log(people[person]);
 
 	for(var el in people) {
 		if(people[el].lastName === people[person].lastName) {
-			console.log(people[el].firstName + " " + people[el].lastName);
+			//console.log(people[el].firstName + " " + people[el].lastName);
+			family = family.push(people[el].firstName + " " + people[el].lastName);
 		}
-		
 	}
-	
-
+	return family;
 }
 
 function search(input, people) {

@@ -73,6 +73,12 @@ function searchByTraits(people) {
 	let choices = makeArray(userSearchChoice);
 	
 	for (let i = 0; i < choices.length; i++) {
+		if(choices[i] != "height" || "weight" || "eye" || "eye color"|| "gender" || "age" || "occupation") {
+			app(people);
+		}
+	}
+
+	for (let i = 0; i < choices.length; i++) {
 		if(choices[i].includes("height")) {
 			filtered = searchByHeight(filtered);	
 		}

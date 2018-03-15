@@ -102,11 +102,12 @@ function searchByTraits(people) {
 			filteredOccupation = searchByOccupation(people);
 			Array.prototype.push.apply(displayThesePeople, filteredOccupation);
 		}
-		
-		alert("You entered an invalid search type! Please try again.");
-	 	searchByTraits(people);
-		
 	}
+
+	// TODO: Proper non matching else logic
+	//alert("You entered an invalid search type! Please try again.");
+	//searchByTraits(people);
+		 
 	console.log(displayThesePeople);
 
 	displayPeople(displayThesePeople);
@@ -202,7 +203,7 @@ function searchByAge(people){
 }
 
 function searchByOccupation(people){
-	let userInputOccupation = prompt("what is the persons age?");
+	let userInputOccupation = prompt("what is the persons occupation?");
 	let newArray = people.filter(function (el){
 		if(el.occupation == userInputOccupation){
 			return el.occupation;

@@ -67,7 +67,6 @@ function lowerCase(word) {
 
 function searchByTraits(people) {
 	let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
-	let newArray =[];
 	let filtered = people;
 	let displayThesePeople = [];
 	let choices = makeArray(userSearchChoice);
